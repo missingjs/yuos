@@ -4,15 +4,17 @@ self_dir=$(cd $(dirname $0) && pwd)
 
 cd $self_dir
 
+img=pm.img
+
 source ./env.sh || exit
 
 set -xe
 
-nasm boot.asm -o boot.bin
+#nasm boot.asm -o boot.bin
+#nasm pmtest1.asm -o pmtest1.bin
 
-[ -e a.img ] && rm a.img
+[ -e $img ] || bximage -fd -size=1.44 -q $img
 
-bximage -fd -size=1.44 -q a.img
-
-dd if=boot.bin of=a.img bs=512 count=1 conv=notrunc
+#dd if=boot.bin of=a.img bs=512 count=1 conv=notrunc
+#dd if=pmtest1.bin of=$img bs=512 count=1 conv=notrunc
 
