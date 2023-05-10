@@ -58,4 +58,4 @@ a.img
 bochsout.txt
 
 # binary file
-boot.bin
+*.bin
