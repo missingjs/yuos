@@ -50,3 +50,12 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# bochs disk image
+a.img
+
+# bochs log file
+bochsout.txt
+
+# binary file
+boot.bin
