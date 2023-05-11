@@ -53,6 +53,7 @@ dkms.conf
 
 # bochs disk image
 a.img
+pm.img
 
 # bochs log file
 bochsout.txt

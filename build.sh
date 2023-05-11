@@ -5,16 +5,16 @@ self_dir=$(cd $(dirname $0) && pwd)
 cd $self_dir
 
 img=pm.img
+task=pmtest2
+mount_dir=/mnt/yuos-floppy
 
 source ./env.sh || exit
 
 set -xe
 
-#nasm boot.asm -o boot.bin
-#nasm pmtest1.asm -o pmtest1.bin
+nasm $task.asm -o $task.com
 
-[ -e $img ] || bximage -fd -size=1.44 -q $img
-
-#dd if=boot.bin of=a.img bs=512 count=1 conv=notrunc
-#dd if=pmtest1.bin of=$img bs=512 count=1 conv=notrunc
-
+[ -e $mount_dir ] || sudo mkdir -p $mount_dir
+sudo mount -o loop $img $mount_dir
+sudo cp $task.com $mount_dir/
+sudo umount $mount_dir
